@@ -1,0 +1,14 @@
+name: Release Drafter
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: read
+
+jobs:
+  draft:
+    uses: tozano-ai-labs/shared-workflows/.github/workflows/release-drafter.yml@v1

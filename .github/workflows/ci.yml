@@ -1,0 +1,53 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  client:
+    uses: tozano-ai-labs/shared-workflows/.github/workflows/ci-node.yml@v1
+    with:
+      node-version: "22"
+      working-directory: client
+
+  server:
+    uses: tozano-ai-labs/shared-workflows/.github/workflows/ci-node.yml@v1
+    with:
+      node-version: "22"
+      working-directory: server
+
+  config:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Actionlint
+        uses: rhysd/actionlint@v1.7.3
+
+      - name: Yamllint
+        run: |
+          python3 -m venv /tmp/yamllint-venv
+          /tmp/yamllint-venv/bin/pip install yamllint
+          /tmp/yamllint-venv/bin/yamllint -c .yamllint.yml .
+
+      - name: Hadolint
+        uses: hadolint/hadolint-action@v3.1.0
+        with:
+          dockerfile: Dockerfile
+          failure-threshold: warning
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Script tests
+        run: npm test

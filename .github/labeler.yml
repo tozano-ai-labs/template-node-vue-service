@@ -1,0 +1,31 @@
+docs:
+  - changed-files:
+      - any-glob-to-any-file:
+          - "**/*.md"
+          - "docs/**"
+
+test:
+  - changed-files:
+      - any-glob-to-any-file:
+          - "**/*.test.*"
+          - "scripts/**/*.test.mjs"
+
+dependencies:
+  - changed-files:
+      - any-glob-to-any-file:
+          - "**/package-lock.json"
+          - ".github/dependabot.yml"
+          - ".gitmodules"
+
+build:
+  - changed-files:
+      - any-glob-to-any-file:
+          - "Dockerfile"
+          - "docker-compose.yml"
+          - ".dockerignore"
+
+ci:
+  - changed-files:
+      - any-glob-to-any-file:
+          - ".github/workflows/**"
+          - ".yamllint.yml"

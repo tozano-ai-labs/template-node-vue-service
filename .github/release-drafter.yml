@@ -1,0 +1,80 @@
+name-template: "v$RESOLVED_VERSION"
+tag-template: "v$RESOLVED_VERSION"
+
+categories:
+  - title: "🚀 Fonctionnalités"
+    labels:
+      - feat
+  - title: "🐛 Corrections"
+    labels:
+      - fix
+  - title: "🔒 Sécurité et RGPD"
+    labels:
+      - security
+      - rgpd
+  - title: "🧰 Maintenance"
+    labels:
+      - build
+      - chore
+      - ci
+      - refactor
+      - test
+      - dependencies
+  - title: "📚 Documentation"
+    labels:
+      - docs
+
+change-template: "- $TITLE @$AUTHOR (#$NUMBER)"
+
+version-resolver:
+  minor:
+    labels:
+      - feat
+  patch:
+    labels:
+      - fix
+      - chore
+      - refactor
+      - docs
+      - build
+      - ci
+      - test
+      - dependencies
+  default: patch
+
+template: |
+  ## Changements
+
+  $CHANGES
+
+autolabeler:
+  - label: feat
+    title:
+      - '/^.*feat\(/i'
+  - label: fix
+    title:
+      - '/^.*fix\(/i'
+  - label: docs
+    title:
+      - '/^.*docs\(/i'
+  - label: refactor
+    title:
+      - '/^.*refactor\(/i'
+  - label: chore
+    title:
+      - '/^.*chore\(/i'
+  - label: build
+    title:
+      - '/^.*build\(/i'
+  - label: ci
+    title:
+      - '/^.*ci\(/i'
+  - label: test
+    title:
+      - '/^.*test\(/i'
+  - label: security
+    title:
+      - '/^.*security\(/i'
+  - label: dependencies
+    title:
+      - '/^.*deps\(/i'
