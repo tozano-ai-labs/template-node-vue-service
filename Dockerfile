@@ -1,11 +1,11 @@
-FROM node:22.22.2-alpine3.22 AS client
+FROM node:26.3.0-alpine3.22 AS client
 WORKDIR /app/client
 COPY client/package*.json ./
 RUN npm ci
 COPY client/ ./
 RUN npm run build
 
-FROM node:22.22.2-alpine3.22 AS server
+FROM node:26.3.0-alpine3.22 AS server
 WORKDIR /app/server
 ENV NODE_ENV=production
 COPY server/package*.json ./
