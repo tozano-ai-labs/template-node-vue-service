@@ -1,0 +1,32 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+
+  "//instructions": "AGENTS.md du projet d'abord, puis les règles partagées du sous-module ai-template.",
+
+  "instructions": [
+    "AGENTS.md",
+    ".ai-template/AGENTS.md",
+    ".ai-template/docs/README.md",
+    ".ai-template/docs/conventions.md",
+    ".ai-template/docs/commits.md",
+    ".ai-template/docs/qualite.md",
+    ".ai-template/docs/securite-ia.md",
+    ".ai-template/docs/tests/README.md",
+    ".ai-template/docs/rgpd/README.md",
+    ".ai-template/docs/rgpd/CHECKLIST.md"
+  ],
+
+  "skills": {
+    "//paths": "Nécessaire pour que les compétences du sous-module soient découvertes : opencode ne scanne pas le sous-module automatiquement.",
+    "paths": [".ai-template/.opencode/skills"]
+  },
+
+  "references": {
+    "//": "Optionnel : accès direct au dépôt du template sans passer par le sous-module. Ne remplace pas le sous-module, qui est la seule source versionnée et disponible hors ligne.",
+    "ai-template": {
+      "repository": "tozano-ai-labs/ai-template",
+      "branch": "main",
+      "description": "Documentation, rôles d'agents et checklist RGPD communes aux projets dont l'IA est exécutante"
+    }
+  }
+}
