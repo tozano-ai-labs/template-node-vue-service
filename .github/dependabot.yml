@@ -1,0 +1,72 @@
+version: 2
+
+updates:
+  - package-ecosystem: npm
+    directory: /client
+    schedule:
+      interval: weekly
+    labels:
+      - dependencies
+    groups:
+      client:
+        patterns:
+          - "*"
+    commit-message:
+      prefix: "📦 build"
+      include: scope
+
+  - package-ecosystem: npm
+    directory: /server
+    schedule:
+      interval: weekly
+    labels:
+      - dependencies
+    groups:
+      server:
+        patterns:
+          - "*"
+    commit-message:
+      prefix: "📦 build"
+      include: scope
+
+  - package-ecosystem: docker
+    directory: /
+    schedule:
+      interval: weekly
+    labels:
+      - dependencies
+    groups:
+      docker:
+        patterns:
+          - "*"
+    commit-message:
+      prefix: "📦 build"
+      include: scope
+
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly
+    labels:
+      - dependencies
+    groups:
+      github-actions:
+        patterns:
+          - "*"
+    commit-message:
+      prefix: "🔧 chore"
+      include: scope
+
+  - package-ecosystem: gitsubmodule
+    directory: /
+    schedule:
+      interval: weekly
+    labels:
+      - dependencies
+    groups:
+      submodules:
+        patterns:
+          - "*"
+    commit-message:
+      prefix: "🔧 chore"
+      include: scope
