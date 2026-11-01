@@ -1,0 +1,19 @@
+services:
+  app:
+    build:
+      context: .
+    image: template-node-vue-service:${VERSION:-0.1.0}
+    container_name: template-node-vue-service
+    restart: unless-stopped
+    env_file: .env
+    environment:
+      PORT: "3000"
+    ports:
+      - "${HOST_BIND:-127.0.0.1}:${PORT:-3000}:3000"
+    networks:
+      - shared
+
+networks:
+  shared:
+    external: true
+    name: ${EXTERNAL_NETWORK:-app-net}

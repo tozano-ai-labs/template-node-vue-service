@@ -1,0 +1,11 @@
+.env
+.git
+.github
+.ai-template
+node_modules
+**/node_modules
+client/dist
+coverage
+*.log
+README.md
+docs
