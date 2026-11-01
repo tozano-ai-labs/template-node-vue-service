@@ -28,10 +28,10 @@ jobs:
   config:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
 
       - name: Actionlint
-        uses: rhysd/actionlint@v1.7.3
+        uses: rhysd/actionlint@v1.7.12
 
       - name: Yamllint
         run: |
@@ -40,12 +40,12 @@ jobs:
           /tmp/yamllint-venv/bin/yamllint -c .yamllint.yml .
 
       - name: Hadolint
-        uses: hadolint/hadolint-action@v3.1.0
+        uses: hadolint/hadolint-action@v3.5.0
         with:
           dockerfile: Dockerfile
           failure-threshold: warning
 
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v7
         with:
           node-version: "22"
 
